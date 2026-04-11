@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Mayje | Mentions Légales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Polices élégantes : Cormorant pour les titres, Inter pour le texte -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0c0c0c;
+            --surface: #141414;
+            --text-main: #f0f0f0;
+            --text-muted: #999999;
+            --accent: #7a1b29; /* Bordeaux chic */
+            --border: #2a2a2a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant', serif;
+            font-weight: 400;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(12,12,12,0.9) 0%, rgba(12,12,12,0) 100%);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Cormorant', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        /* --- CONTENU --- */
+        main {
+            flex-grow: 1;
+            padding-top: 150px;
+            padding-bottom: 100px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            padding-left: 40px;
+            padding-right: 40px;
+            animation: fadeInPage 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            font-weight: 300;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .legal-section {
+            margin-bottom: 45px;
+        }
+
+        .legal-section h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .legal-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .legal-section strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .legal-section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .legal-section a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            .page-title {
+                font-size: 2.5rem;
+            }
+            main {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Maison Mayje</a>
+        <a href="index.html" class="back-link">
+            <span>← Retour au Manoir</span>
+        </a>
+    </header>
+
+    <main>
+        <h1 class="page-title">Mentions Légales</h1>
+        <p class="intro-text">Chez Maison Mayje, nous aimons les belles histoires, les jeux d'esprit et les univers qui font sourire. Ce site est une création récréative et fictive.</p>
+
+        <div class="legal-section">
+            <h2>Éditeur du site</h2>
+            <p>Le présent site est édité à titre non professionnel. Il ne propose à la vente aucun bien ni aucun service, et ne représente aucune marque, société ou agence réelle.</p>
+            <p>Conformément au régime applicable aux éditeurs non professionnels (Art. 6 de la LCEN), l'identité complète de l'éditeur a été communiquée à l'hébergeur du site, qui la tient à disposition des autorités compétentes en cas de demande légale.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Hébergement</h2>
+            <p>Le site est hébergé par :</p>
+            <p>
+                <strong>GitHub, Inc.</strong><br>
+                88 Colin P. Kelly Jr. Street<br>
+                San Francisco, CA 94107, États-Unis<br>
+                Téléphone : +1 (877) 448-4820<br>
+                Site web : <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
+            </p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Propriété intellectuelle</h2>
+            <p>Les textes, éléments visuels, mises en page, créations graphiques et ambiances présents sur ce site sont protégés au titre du droit applicable à la propriété intellectuelle. Le contenu présenté sur ce site relève de la fiction et du divertissement.</p>
+            <p>Toute reproduction, représentation, adaptation ou réutilisation, totale ou partielle, sans autorisation préalable, n'est pas autorisée.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Données personnelles & Cookies</h2>
+            <p>À la date de mise en ligne de cette page, le site ne collecte aucune donnée personnelle via formulaire et n'organise aucune création de compte, commande ou réservation.</p>
+            <p>Le site n'utilise pas, à la connaissance de l'éditeur, de cookies publicitaires ni de traceurs destinés à l'exploitation commerciale des données des visiteurs.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Contact</h2>
+            <p>Pour tout signalement relatif au contenu du site ou si vous aviez oublié d'acheter un nom de domaine par exemple, vous pouvez écrire à : <br>
+            <strong><a href="mailto:jvousavaisditquoi@lesanglesmoooorts.com">jvousavaisditquoi@lesanglesmoooorts.com</a></strong></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Maison Mayje — L'évasion n'appartient qu'à vous.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Mayje | L'art de la volupté</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Police élégante pour les titres (Cormorant) et moderne pour le texte (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0c0c0c;
+            --surface: #141414;
+            --text-main: #f0f0f0;
+            --text-muted: #999999;
+            --accent: #7a1b29; /* Bordeaux très sombre et chic */
+            --border: #2a2a2a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant', serif;
+            font-weight: 400;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(12,12,12,0.9) 0%, rgba(12,12,12,0) 100%);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Cormorant', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* --- LAYOUT PAGES --- */
+        .page {
+            display: none;
+            opacity: 0;
+            padding-top: 120px;
+            min-height: 100vh;
+            animation: fadeInPage 0.8s forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            margin-top: 50px;
+            filter: brightness(0.85);
+        }
+
+        /* --- TEXT BLOCKS --- */
+        .text-section {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            text-align: center;
+        }
+
+        .text-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .text-section p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* --- ROOMS GRID --- */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-bottom: 100px;
+        }
+
+        .room-card {
+            display: flex;
+            flex-direction: column;
+            group: room;
+        }
+
+        .room-image-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            margin-bottom: 25px;
+            background-color: var(--surface); /* Couleur de fond en attendant l'image */
+        }
+
+        .room-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: brightness(0.9);
+        }
+
+        .room-card:hover .room-image-wrapper img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .room-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .room-attributes {
+            display: flex;
+            gap: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="switchPage('home')">Maison Mayje</div>
+        <nav>
+            <a class="nav-link active" data-target="home" onclick="switchPage('home')">Le Manoir</a>
+            <a class="nav-link" data-target="rooms" onclick="switchPage('rooms')">Les Suites</a>
+        </nav>
+    </header>
+
+    <!-- PAGE 1 : LE MANOIR -->
+    <main id="home" class="page active">
+        <div class="container">
+            <section class="hero">
+                <h1 class="hero-title">L'Art de la Tentation</h1>
+                <p class="hero-subtitle">Un domaine privé où le temps s'arrête, les regards s'attardent et les désirs prennent vie. Le luxe de se retrouver, sans jugement.</p>
+                
+                <!-- IMAGE PRINCIPALE DU MANOIR -->
+                <img src="146f1dea-3fb9-4ec3-9947-255f39092ca2.png" alt="Maison Mayje Façade" class="hero-image">
+            </section>
+
+            <section class="text-section">
+                <h2>Le Plaisir Partagé</h2>
+                <p>À la Maison Mayje, nous cultivons le goût du mystère et l'élégance du jeu. Pousser nos portes, c'est accepter de laisser la routine à l'extérieur pour s'immerger dans une parenthèse hautement sensuelle.</p>
+                <p>Notre approche est complice et résolument taquine. Les couloirs sombres murmurent des promesses, et chaque espace a été pensé pour exalter les sens. Ici, l'espace est majestueux, l'atmosphère feutrée, et chaque nuit est une toile vierge que vous êtes invités à peindre à deux.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- PAGE 2 : LES SUITES -->
+    <main id="rooms" class="page">
+        <div class="container">
+            <section class="text-section" style="margin-bottom: 60px;">
+                <h2>L'Intimité des Suites</h2>
+                <p>Six univers, six façons de se découvrir. Conçues comme des décors de cinéma, nos chambres allient le confort d'un palace à l'audace d'une nuit sans limites.</p>
+            </section>
+
+            <div class="rooms-grid">
+                
+                <!-- CHAMBRE 1 -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="18d71c33-65cc-45d0-b5ff-8f88a67b836f.png" alt="L'Alcôve de Velours">
+                    </div>
+                    <div class="room-info">
+                        <h3>L'Alcôve de Velours</h3>
+                        <p>Plongez dans un océan de douceur. Habillée de profonds rideaux bordeaux et baignée d'un éclairage à la bougie, cette suite s'articule autour d'un spectaculaire lit rond recouvert de soie. Une atmosphère charnelle pour des étreintes qui prennent leur temps.</p>
+                        <div class="room-attributes">
+                            <span>Lit Circulaire</span>
+                            <span>Soie & Velours</span>
+                            <span>Romance</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAMBRE 2 -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="dfa9b06f-23b2-4812-8b1d-18f246d315df.png" alt="Le Donjon de Soie">
+                    </div>
+                    <div class="room-info">
+                        <h3>Le Donjon de Soie</h3>
+                        <p>Pour les âmes joueuses en quête de frissons inédits. Cette chambre mêle l'élégance classique aux frissons d'un univers taquin. Avec ses grands miroirs stratégiquement placés et son mobilier subtilement autoritaire, c'est le lieu idéal pour inverser les rôles et tester ses limites avec chic.</p>
+                        <div class="room-attributes">
+                            <span>Miroirs</span>
+                            <span>Jeu de rôles</span>
+                            <span>Tension</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAMBRE 3 -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="3a74a9ed-4149-4079-ad40-5ef3ae572e3e.png" alt="Le Jardin d'Éden">
+                    </div>
+                    <div class="room-info">
+                        <h3>Le Jardin d'Éden</h3>
+                        <p>Une atmosphère sauvage et humide. Dotée d'une immense douche double ouverte et d'un bain bouillonnant privatif caché dans la végétation, cet espace est un paradis sensoriel. Laissez monter la vapeur, osez croquer le fruit défendu dans votre propre jardin secret.</p>
+                        <div class="room-attributes">
+                            <span>Bain Privatif</span>
+                            <span>Vapeur</span>
+                            <span>Tropical</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAMBRE 4 -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="9ab15852-60f4-4db8-b540-748856b573b8.png" alt="Le Salon de l'Amant">
+                    </div>
+                    <div class="room-info">
+                        <h3>Le Salon de l'Amant</h3>
+                        <p>L'espace idéal pour faire patienter sa conquête ou prolonger la nuit autrement. Ce lounge ultra-confortable et privé dispose d'un profond canapé en cuir, d'une lumière d'ambiance tamisée et d'une PS5 avec écran géant. Un contrepoint décontracté, taquin et très exclusif au reste du manoir.</p>
+                        <div class="room-attributes">
+                            <span>Lounge Privé</span>
+                            <span>Console PS5</span>
+                            <span>Détente</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAMBRE 5 (NOUVELLE) -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="4d9c68a4-ce84-4a8a-88c2-1dc6f2c3da58.png" alt="L'Échappée">
+                    </div>
+                    <div class="room-info">
+                        <h3>L'Échappée</h3>
+                        <p>Fuyez la monotonie. Conçue comme une luxueuse "escape room", cette suite vous met au défi de raviver la flamme. Résolvez ensemble une série d'énigmes intellectuelles et sensuelles pour déverrouiller la suite de votre nuit. Une aventure immersive où la complicité est la clé absolue de votre plaisir.</p>
+                        <div class="room-attributes">
+                            <span>Énigmes</span>
+                            <span>Complicité</span>
+                            <span>Évasion</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAMBRE 6 (NOUVELLE) -->
+                <article class="room-card">
+                    <div class="room-image-wrapper">
+                        <!-- REMPLACER LE LIEN SRC PAR VOTRE IMAGE -->
+                        <img src="822caee2-5d47-4931-aaae-53a410f2bc7c.png" alt="Le Fracas">
+                    </div>
+                    <div class="room-info">
+                        <h3>Le Fracas</h3>
+                        <p>La chambre des passions explosives. Idéale pour les couples sous tension, cette "destroy room" élégante et sécurisée vous invite à briser porcelaines et verres pour exorciser vos frustrations. Laissez éclater la tempête et libérez l'adrénaline, avant de glisser vers une autre suite pour une réconciliation foudroyante.</p>
+                        <div class="room-attributes">
+                            <span>Défouloir</span>
+                            <span>Catharsis</span>
+                            <span>Réconciliation</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+     <footer>
+        <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <p>© 2026 Maison Mayje — L'évasion n'appartient qu'à vous.</p>
+            <a href="mentions-legales.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 1px; transition: color 0.3s ease; text-transform: uppercase;">Mentions Légales</a>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction simple et propre pour changer de page
+        function switchPage(pageId) {
+            // Cacher toutes les pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Enlever l'état actif de tous les liens de navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Afficher la page demandée
+            document.getElementById(pageId).classList.add('active');
+            
+            // Mettre en surbrillance le bon lien dans la navigation
+            const activeLink = document.querySelector(`.nav-link[data-target="${pageId}"]`);
+            if (activeLink) activeLink.classList.add('active');
+
+            // Remonter doucement en haut de page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
